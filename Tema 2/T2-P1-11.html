@@ -4,8 +4,20 @@
 </head>
 <script type="text/javascript">
   function ejercicio11() {
-    var numero;
-}
+    var numero = prompt("Introduce un numero:");
+    var suma = 1;
+
+    for (var i = 2; i <= numero && suma <= numero; i++) {
+      if (numero % i == 0) {
+        suma += i;
+      }
+    }
+    if (numero == suma) {
+      document.write("El numero " + numero + " es perfecto.");
+    } else {
+      document.write("El numero " + numero + " no es perfecto.");
+    }
+  }
 </script>
 
 <body onload="ejercicio11()">
