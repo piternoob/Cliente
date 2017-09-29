@@ -4,7 +4,49 @@
 </head>
 <script type="text/javascript">
   function ejercicio12() {
-    var numero;
+      var numero = prompt("Introduce un numero:");
+      var aux=numero;
+      var sumaPrimos = 0;
+      var sumaPrimo;
+      var sumaNumero=0;
+      var sumado;
+      var nString=numero.toString();
+      var iString;
+
+      for (var i = 0; i < nString.length; i++) {
+        sumaNumero+=parseInt(nString.charAt(i));
+      }
+
+      for (var i = 2; i <= aux && sumaPrimos <= sumaNumero; i++) {
+        iString=i.toString();
+
+        do {
+          if (aux % i == 0) {
+            sumaPrimo=0;
+            if (iString.length==1) {
+              sumaPrimos += i;
+              aux/=i;
+              sumado=true;
+            } else {
+              for (var j = 0; j < iString.length; j++) {
+                sumaPrimo+=parseInt(iString.charAt(j));
+              }
+              sumaPrimos += sumaPrimo;
+              aux/=i;
+              sumado=true;
+            }
+
+          } else {
+            sumado=false;
+          }
+        } while (sumado);
+
+      }
+      if (sumaNumero == sumaPrimos) {
+        document.write("El numero " + numero + " es Smith.");
+      } else {
+        document.write("El numero " + numero + " no es Smith."+sumaPrimos+" "+sumaNumero);
+      }
 }
 </script>
 
