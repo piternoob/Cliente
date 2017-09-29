@@ -1,1 +1,0 @@
-var pedro=0;
