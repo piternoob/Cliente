@@ -7,7 +7,6 @@
       var numero = prompt("Introduce un numero:");
       var aux=numero;
       var sumaPrimos = 0;
-      var sumaPrimo;
       var sumaNumero=0;
       var sumado;
       var nString=numero.toString();
@@ -22,16 +21,15 @@
 
         do {
           if (aux % i == 0) {
-            sumaPrimo=0;
             if (iString.length==1) {
               sumaPrimos += i;
               aux/=i;
               sumado=true;
             } else {
               for (var j = 0; j < iString.length; j++) {
-                sumaPrimo+=parseInt(iString.charAt(j));
+                sumaPrimos+=parseInt(iString.charAt(j));
               }
-              sumaPrimos += sumaPrimo;
+
               aux/=i;
               sumado=true;
             }
@@ -45,7 +43,7 @@
       if (sumaNumero == sumaPrimos) {
         document.write("El numero " + numero + " es Smith.");
       } else {
-        document.write("El numero " + numero + " no es Smith."+sumaPrimos+" "+sumaNumero);
+        document.write("El numero " + numero + " no es Smith.");
       }
 }
 </script>
