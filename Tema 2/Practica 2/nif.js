@@ -74,8 +74,8 @@ function nif() {
 
 function cif() {
   var cadena = prompt("Introduce un CIF:");
-  var controlNum = "AHJUV";
-  var controlLetra = "PQRSW";
+  var controlNum = "AHJUV"; //ABCDEFGHJUV
+  var controlLetra = "PQRSW"; //NPQRSW
   var controlValores = "JABCDEFGHI";
   var control;
   var esNum = false;
