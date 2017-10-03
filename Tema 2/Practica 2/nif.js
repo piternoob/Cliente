@@ -74,8 +74,8 @@ function nif() {
 
 function cif() {
   var cadena = prompt("Introduce un CIF:");
-  var controlNum = "AHJUV"; //ABCDEFGHJUV
-  var controlLetra = "PQRSW"; //NPQRSW
+  var controlNum = "ABCDEFGHJUV"; //ABCDEFGHJUV
+  var controlLetra = "NPQRSW"; //NPQRSW
   var controlValores = "JABCDEFGHI";
   var control;
   var esNum = false;
@@ -89,11 +89,16 @@ function cif() {
 
   cadena = cadena.toUpperCase();
   if (cadena.length == 9) {
-    for (var i = 0; i < controlNum.length && !esNum && !esLetra; i++) {
+    for (var i = 0; i < controlNum.length && !esNum; i++) {
       if (cadena.charAt(0) == controlNum.charAt(i)) {
         esNum = true;
-      } else if (cadena.charAt(0) == controlLetra.charAt(i)) {
-        esLetra = true;
+      }
+    }
+    if (!esNum) {
+      for (var i = 0; i < controlLetra.length && !esLetra; i++) {
+        if (cadena.charAt(0) == controlLetra.charAt(i)) {
+          esLetra = true;
+        }
       }
     }
     if (esNum || esLetra) {
