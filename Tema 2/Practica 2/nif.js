@@ -87,7 +87,7 @@ function cif() {
   var str;
   var valor;
 
-cadena=cadena.toUpperCase();
+  cadena = cadena.toUpperCase();
   if (cadena.length == 9) {
     for (var i = 0; i < controlNum.length && !esNum && !esLetra; i++) {
       if (cadena.charAt(0) == controlNum.charAt(i)) {
@@ -97,7 +97,7 @@ cadena=cadena.toUpperCase();
       }
     }
     if (esNum || esLetra) {
-      cadenaNum = cadenaNum.substring(1, 8);
+      cadenaNum = cadena.substring(1, 8);
       for (var i = 0; i < cadenaNum.length; i++) {
         for (var j = 0; j < numeros.length; j++) {
           if (cadenaNum.charAt(i) == numeros.charAt(j)) {
@@ -106,10 +106,8 @@ cadena=cadena.toUpperCase();
         }
       }
       if (contador == cadenaNum.length) {
-        alert("h"+suma);
         for (var i = 1; i < cadenaNum.length; i += 2) {
           suma += parseInt(cadenaNum.charAt(i));
-          alert("h"+suma);
         }
         for (var i = 0; i < cadenaNum.length; i += 2) {
           str = (parseInt(cadenaNum.charAt(i)) * 2).toString();
@@ -130,7 +128,7 @@ cadena=cadena.toUpperCase();
             document.write("CIF correcto.");
             valor = 1;
           } else {
-            document.write("CIF incorrecto control no valido."+suma%10+" "+suma+" "+control);
+            document.write("CIF incorrecto control no valido.");
             valor = 2;
           }
         } else {
