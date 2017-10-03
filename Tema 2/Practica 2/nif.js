@@ -13,7 +13,7 @@ function nif() {
   cadena = cadena.toUpperCase();
   alert("Comprobar si tiene longitud 9");
   if (cadena.length == 9) {
-    alert("Tiene longitud 9")
+    alert("Tiene longitud 9");
     for (var i = 0; i < primero.length && !primeroB; i++) {
       if (cadena.charAt(0) == primero.charAt(i)) {
         primeroB = true;
@@ -96,11 +96,16 @@ function cif() {
   var letrasN = "AHJUV";
   var letrasL = "PQRSW";
   var numeros = "0123456789";
-  var control;
+  var cadenaNum = "";
+  var sumaNum = 0;
+  var contador = 0;
+  var controlB;
   var valor;
+  var str;
+  var num;
 
   cadena = cadena.toUpperCase();
-  alert("Comprobamos si tiene longitud 9")
+  alert("Comprobamos si tiene longitud 9");
   if (cadena.length == 9) {
     for (var i = 0; i < letrasN.length && control == 0; i++) {
       if (cadena.charAt(0) == letrasN.charAt(i)) {
@@ -109,37 +114,96 @@ function cif() {
         control = 2;
       }
     }
-    if (control == 1) {
-      control = false;
-      for (var i = 0; i < numeros.length && !control; i++) {
-        if (cadena.charAt(cadena.length - 1) == numeros.charAt(i)) {
-          control = true;
+
+
+    if (control != 0) {
+      for (var i = 1; i < cadena.length - 1; i++) {
+        for (var j = 0; j < numeros.length; j++) {
+          if (cadena.charAt(i) == numeros.charAt(j)) {
+            contador++;
+          }
         }
       }
-      if (control) {
-        alert("Control valido");
-      } else {
-        document.write("CIF erroneo, control no valido ");
-        valor = 2;
-      }
-      alert("Control valido");
-    } else if (control == 2) {
-      control = true;
-      for (var i = 0; i < numeros.length && control; i++) {
-        if (cadena.charAt(cadena.length - 1) == numeros.charAt(i)) {
-          control = false;
+
+      if (contador == 7) {
+        for (var i = 1; i < cadena.length - 1; i++) {
+          cadenaNum += cadena.charAt(i);
         }
-      }
-      if (control) {
-        alert("Control valido");
+        if (control == 1) {
+          controlB = false;
+          for (var i = 0; i < numeros.length && !controlB; i++) {
+            if (cadena.charAt(cadena.length - 1) == numeros.charAt(i)) {
+              controlB = true;
+            }
+          }
+          if (controlB) {
+            alert("Control es numero");
+            //sumamos los pares
+            for (var i = 1; i < cadenaNum.length; i += 2) {
+              sumaNum += parseInt(cadenaNum.charAt(i));
+            }
+            //impares
+            for (var i = 0; i < cadenaNum.length; i += 2) {
+              str=(parseInt(cadenaNum.charAt(i))*2).toString();
+              if (str.length == 1) {
+                sumaNum += (parseInt(cadenaNum.charAt(i))*2);
+              } else {
+                for (var j = 0; j < str.length; j++) {
+                  sumaNum+= parseInt(str.charAt(j));
+                }
+              }
+            }
+            //dividir
+            num=10-sumaNum%10;
+            if (num==10) {
+              num=0;
+            }
+            if (num==parseInt(cadena.charAt(cadena.length-1))) {
+              document.write("CIF valido");
+              valor = 1;
+            } else {
+              document.write("CIF erroneo, control no valido ");
+              valor = 2;
+            }
+
+
+          } else {
+            document.write("CIF erroneo, control no valido ");
+            valor = 2;
+          }
+        } else {
+          //contro==2
+          controlB = true;
+          for (var i = 0; i < numeros.length && controlB; i++) {
+            if (cadena.charAt(cadena.length - 1) == numeros.charAt(i)) {
+              controlB = false;
+            }
+          }
+          if (controlB) {
+            alert("Control es letra");
+
+
+
+
+
+
+          } else {
+            document.write("CIF erroneo, control no valido ");
+            valor = 2;
+          }
+        }
+
+
       } else {
-        document.write("CIF erroneo, control no valido ");
-        valor = 2;
+        document.write("CIF erroneo, numeros no validos");
+        valor = 0;
       }
     } else {
-      document.write("CIF no valido ");
+      document.write("CIF erroneo, primera letra no valida");
       valor = 0;
     }
+
+
   } else {
     document.write("CIF no valido ");
     valor = 0;
