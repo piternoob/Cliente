@@ -1,79 +1,85 @@
-function nif() {
-  var cadena = prompt("Introduce un NIF:");
+function nif(cadena) {
+  //var cadena = prompt("Introduce un NIF:");
   var letras = "XYZLKM";
   var numeros = "0123456789";
   var control = "TRWAGMYFPDXBNJZSQVHLCKE";
   var esNif = false;
-  var esDni = false;
+  var esNifDni = false;
   var cadenaNum = "";
   var contador = 0;
   var valor;
+  var valDni;
 
-  cadena = cadena.toUpperCase();
-  if (cadena.length < 9) {
-    while (cadena.length < 9) {
-      cadena = "0" + cadena;
-    }
-  }
-  for (var i = 0; i < letras.length && !esNif; i++) {
-    if (letras.charAt(i) == cadena.charAt(0)) {
-      esNif = true;
-    }
-  }
-  if (!esNif) {
-    alert("Hola");
-    for (var i = 0; i < numeros.length && !esDni; i++) {
-      if (numeros.charAt(i) == cadena.charAt(0)) {
-        esDni = true;
+  if (cadena.length == 9) {
+    for (var i = 0; i < letras.length && !esNif; i++) {
+      if (letras.charAt(i) == cadena.charAt(0)) {
+        esNif = true;
       }
     }
-  }
-  if (esNif || esDni) {
-    if (cadena.charAt(0) == "Z") {
-      cadenaNum += "2";
-    } else if (cadena.charAt(0) == "Y") {
-      cadenaNum += "1";
-    }
-    if (esNif) {
-      cadenaNum += cadena.substring(1, 8);
-    } else {
-      cadenaNum += cadena.substring(0, 8);
-    }
-    for (var i = 0; i < cadenaNum.length; i++) {
-      for (var j = 0; j < numeros.length; j++) {
-        if (cadenaNum.charAt(i) == numeros.charAt(j)) {
-          contador++;
+    if (!esNif) {
+      //alert("Hola");
+      for (var i = 0; i < numeros.length && !esNifDni; i++) {
+        if (numeros.charAt(i) == cadena.charAt(0)) {
+          esNifDni = true;
         }
       }
     }
-    if (contador == cadenaNum.length) {
-      if (cadena.charAt(8) == control.charAt(parseInt(cadenaNum) % 23)) {
-        if (esNif) {
-          document.write("Control valido, es NIF.");
-          valor = 1;
-        } else if (parseInt(cadenaNum) >= 100000) {
-          document.write("Control valido, es DNI.");
-          valor = 3;
+    if (esNif || esNifDni) {
+      if (cadena.charAt(0) == "Z") {
+        cadenaNum += "2";
+      } else if (cadena.charAt(0) == "Y") {
+        cadenaNum += "1";
+      }
+      if (esNif) {
+        cadenaNum += cadena.substring(1, 8);
+      } else {
+        cadenaNum += cadena.substring(0, 8);
+      }
+      for (var i = 0; i < cadenaNum.length; i++) {
+        for (var j = 0; j < numeros.length; j++) {
+          if (cadenaNum.charAt(i) == numeros.charAt(j)) {
+            contador++;
+          }
+        }
+      }
+      if (contador == cadenaNum.length) {
+        if (cadena.charAt(8) == control.charAt(parseInt(cadenaNum) % 23)) {
+          valor=1;
         } else {
-          document.write("Dni no valido menor de 100000.");
-          valor = 0;
+          //document.write("Control no valido.");
+          valor = 2;
         }
       } else {
-        document.write("Control no valido.");
-        valor = 2;
+        //document.write("No es nif ni dni.");
+        valor = 0;
       }
     } else {
-      document.write("No es nif ni dni.");
+      //document.write("No es nif ni dni.");
+      valor = 0;
+    }
+  } else if (cadena.length >= 6 && cadena.length <= 8) {
+    valDni = parseInt(cadena);
+    if (cadena.length == valDni.toString().length && valDni >= 100000) {
+      valor = 3;
+    } else {
       valor = 0;
     }
   } else {
-    document.write("No es nif ni dni.");
     valor = 0;
   }
+
+  /*if (cadena.length < 9) {
+    while (cadena.length < 9) {
+      cadena = "0" + cadena;
+    }
+  }*/
+
+
+  return valor;
 }
 
-function cif() {
-  var cadena = prompt("Introduce un CIF:");
+function cif(cadena) {
+  //var cadena = prompt("Introduce un CIF:");
   var controlNum = "ABCDEFGHJUV"; //ABCDEFGHJUV
   var controlLetra = "NPQRSW"; //NPQRSW
   var controlValores = "JABCDEFGHI";
@@ -87,7 +93,6 @@ function cif() {
   var str;
   var valor;
 
-  cadena = cadena.toUpperCase();
   if (cadena.length == 9) {
     for (var i = 0; i < controlNum.length && !esNum; i++) {
       if (cadena.charAt(0) == controlNum.charAt(i)) {
@@ -130,31 +135,60 @@ function cif() {
         }
         if (esNum) {
           if (control.toString() == cadena.charAt(8)) {
-            document.write("CIF correcto.");
+            //document.write("CIF correcto.");
             valor = 1;
           } else {
-            document.write("CIF incorrecto control no valido.");
+            //document.write("CIF incorrecto control no valido.");
             valor = 2;
           }
         } else {
           if (controlValores.charAt(control) == cadena.charAt(8)) {
-            document.write("CIF correcto.");
+            //document.write("CIF correcto.");
             valor = 1;
           } else {
-            document.write("CIF incorrecto control no valido.");
+            //document.write("CIF incorrecto control no valido.");
             valor = 2;
           }
         }
       } else {
-        document.write("No es cif1.");
+        //document.write("No es cif1.");
         valor = 0;
       }
     } else {
-      document.write("No es cif2.");
+      //document.write("No es cif2.");
       valor = 0;
     }
   } else {
-    document.write("No es cif3.");
+    //document.write("No es cif3.");
     valor = 0;
   }
+  return valor;
+}
+
+function nifcif(cadena) {
+  var valoresCif = "ABCDEFGHJUVNPQRSW";
+  var cifBool = false;
+  var letraCif = "C";
+  var letraNif = "N";
+  var valor;
+
+  for (var i = 0; i < valoresCif.length && !cifBool; i++) {
+    if (cadena.charAt(0) == valoresCif.charAt(i)) {
+      cifBool = true;
+    }
+  }
+  if (cifBool) {
+    if (cif(cadena) == 0) {
+      valor = "0";
+    } else {
+      valor = letraCif + cif(cadena);
+    }
+  } else {
+    if (nif(cadena) == 0) {
+      valor = "0";
+    } else {
+      valor = letraNif + nif(cadena);
+    }
+  }
+  return valor;
 }
