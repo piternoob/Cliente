@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript">
+      function ejercicio5(){
+        var aleatorio=Math.round(Math.random()*20+1);
+        do{
+          var numero=prompt("Introduce un número del 1 al 20:");
+        }while(numero<1 || numero >20);
+        if (numero==aleatorio) {
+          document.write("¡He acertado!");
+        } else {
+          document.write("¡No he acertado!");
+        }
+      }
+		</script>
+
+	</head>
+  <body onload="ejercicio5()">
+  </body>
+  </html>
