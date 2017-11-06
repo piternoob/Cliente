@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    <title>Primero</title>
+	</head>
+	<body>
+    <input type="button" value="Iniciar" onclick="iniciar()">
+    <input type="button" value="Parar" onclick="parar()">
+    <script type="text/javascript">
+    var numero=0;
+
+
+      function iniciar(){
+        var intervalo=window.setInterval("comprobar()", 1000);
+      }
+      function comprobar(){
+        document.write(numero);
+        numero++;
+      }
+      function parar(){
+        clearInterval(intervalo);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    <title>Segundo</title>
+	</head>
+	<body>
+    <script type="text/javascript">
+      document.writeln("Altura disponible:"+screen.availHeight+".");
+      document.writeln("Anchura disponible:"+screen.availWidth+".");
+      if (navigator.userAgent.indexOf("Firefox") != -1) {
+        document.writeln ("Navegador Mozilla Firefox.");
+      } else if (navigator.userAgent.indexOf("MSIE") != -1) {
+        document.writeln ("Navegador Internet Explorer.");
+      } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+        document.writeln ("Navegador Google Chrome.");
+      } else if (navigator.userAgent.indexOf("Safari") != -1) {
+        document.writeln ("Navegador Apple Safari.");
+      } else if (navigator.userAgent.indexOf("Opera") != -1) {
+        document.writeln ("Navegador Opera.");
+      } else if (navigator.userAgent.indexOf("OPR") != -1) {
+        document.writeln ("Navegador Opera.");
+      } else if (navigator.userAgent.indexOf(".NET CLR ") != -1) {
+        document.writeln ("Navegador Internet Explorer.");
+      }
+      document.writeln("Alto navegador:"+window.innerHeight+".");
+      document.writeln("Ancho navegador:"+window.innerWidth+".");
+    </script>
+  </body>
+</html>

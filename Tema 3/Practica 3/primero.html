@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    <title>Primero</title>
+	</head>
+	<body>
+    <script type="text/javascript">
+      var salida="aprobare";
+      var correcto=window.setInterval("comprobar()", 15000);
+      var palabra;
+      function comprobar(){
+        palabra=prompt("Introduce una palabra, salir con aprobare.");
+        if(salida==palabra){
+          clearInterval(correcto);
+        }
+      }
+    </script>
+  </body>
+</html>

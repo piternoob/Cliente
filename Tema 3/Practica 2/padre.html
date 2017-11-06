@@ -2,16 +2,37 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<title>Padre</title>
 		<script type="text/javascript">
+		var primero;
+		var segundo;
+		function primero(){
+			primero=window.open("primero.html");
+		}
+		function segundo(){
+			segundo=window.open("segundo.html");
+		}
+		function tercero(){
+			segundo.document.title="Cambiando el título desde el padre.";
+		}
+		function cuarto(){
+			segundo.location="segovia03.html";
+		}
+		function quinto(){
+			segundo.window.close();
+		}
+		function cerrar(){
+			window.close();
+		}
 		</script>
 	</head>
 	<body>
     <ol>
-      <li><a href="primero.thml">Crear primera página hija</a></li>
-      <li><a href="segundo.html">Crear segunda página hija</a></li>
-      <li><a href="segundo.html">Cambiar el título a la segunda página hija</a></li>
-      <li><a href="segovia03.html">Cambiar segunda página hija</a></li>
-      <li><a href="">Cerrar segunda página hija</a></li>
+      <li><a onclick="primero()">Crear primera página hija</a></li>
+      <li><a onclick="segundo()">Crear segunda página hija</a></li>
+      <li><a onclick="tercero()">Cambiar el título a la segunda página hija</a></li>
+      <li><a onclick="cuarto()">Cambiar segunda página hija</a></li>
+      <li><a onclick="quinto()">Cerrar segunda página hija</a></li>
     </ol>
   </body>
 </html>

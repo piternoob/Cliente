@@ -1,0 +1,46 @@
+<html>
+
+	<head>
+
+		<script type="text/javascript">
+			var x=1;
+			var factoriales=" ";
+			var ejecucion;
+			function factorial(){
+
+				var factorial=1;
+				for(var i=1;i<x;i++){
+					factorial*=i;
+				}
+				factoriales=factoriales+" "+factorial.toString()+",";
+				alert(factoriales);
+				x++;
+
+
+
+			}
+			function iniciar(){
+				ejecucion=setInterval(factorial,1000);
+
+			}
+			function parar () {
+				clearInterval(ejecucion);
+
+			}
+
+
+		</script>
+
+
+	</head>
+
+
+	<body>
+
+		<input type="button" onclick="iniciar()" value="Iniciar"/>
+		<input type="button" onclick="parar()" value="Parar" />
+		<p id="parrafo"></p>
+
+
+	</body>
+</html>
