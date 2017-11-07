@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    <title>Sexto</title>
+	</head>
+	<body>
+		<input type="button" value="Crear" onclick="crearVentana()">
+
+    <script type="text/javascript">
+		var ventana;
+		var intervalo;
+		var contador=0;
+
+      function crearVentana(){
+        ventana=window.open("segovia03.html","","width=500px, height=500px");
+				intervalo=setInterval("redimensionar()", 1000);
+      }
+			function redimensionar(){
+				if (contador<5) {
+					ventana.resizeBy(50,50);
+					contador++;
+				} else {
+					clearInterval(intervalo);
+				}
+			}
+    </script>
+  </body>
+</html>
