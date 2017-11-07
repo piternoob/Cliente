@@ -2,25 +2,37 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-    <title>Primero</title>
+    <title>Segundo</title>
 	</head>
-	<body>
-    <input type="button" value="Iniciar" onclick="iniciar()">
-    <input type="button" value="Parar" onclick="parar()">
+	<body onload="empezar()">
+
     <script type="text/javascript">
-    var numero=0;
+	    var numero=0;
+			var mostrar;
+			var intervalo;
+			var factorial=1;
 
-
-      function iniciar(){
-        var intervalo=window.setInterval("comprobar()", 1000);
-      }
-      function comprobar(){
-        document.write(numero);
-        numero++;
-      }
-      function parar(){
-        clearInterval(intervalo);
-      }
+	    function iniciar(){
+	        intervalo=setInterval("comprobar()", 13000);
+	    }
+	    function comprobar(){
+				for(var i=1; i<=numero;i++){
+					factorial*=i;
+				}
+				mostrar="<div>"+factorial+"</div>";
+	      document.write(mostrar);
+				numero++;
+				factorial=1;
+	    }
+	    function parar(){
+	      clearInterval(intervalo);
+	    }
+			function empezar(){
+				var boton1='<input type="button" value="Iniciar" onclick="iniciar()">';
+				document.write(boton1);
+				var boton2='<input type="button" value="Parar" onclick="parar()">';
+				document.write(boton2);
+			}
     </script>
   </body>
 </html>

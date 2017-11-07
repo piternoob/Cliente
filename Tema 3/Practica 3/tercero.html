@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+    <title>Tercero</title>
+	</head>
+	<body onload="empezar()">
+    <script type="text/javascript">
+      function segundo(){
+        var p2="<div>"+"Crea un documento HTML en el cual se va introducir su contenido mediante código Javascript. Cada párrafo del documento se va a mostrar cada 5 segundos, así como las imágenes que contenga. El documento debe tener al menos siete párrafos y cinco imágenes. Puedes coger el contenido de la página Web de cualquier ejercicio realizado anteriormente."+"</div>";
+        document.write(p2)
+      }
+      function empezar(){
+        var p1="<div>"+"Crea un documento HTML con un determinado contenido y cuando transcurran 10 segundos nos añada el resto del contenido del documento"+"</div>";
+        document.write(p1)
+        var tiempo=window.setTimeout("segundo()", 10000);
+      }
+    </script>
+  </body>
+</html>
