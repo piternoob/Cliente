@@ -14,11 +14,11 @@
 
       function crearVentana(){
         ventana=window.open("segovia03.html","","width=500px, height=500px");
-				intervalo=setInterval("redimensionar()", 1000);
+				intervalo=setInterval("redimensionar()", 8000);
       }
 			function redimensionar(){
-				if (contador<5) {
-					ventana.resizeBy(50,50);
+				if (contador<4) {
+					ventana.moveBy(50,50);
 					contador++;
 				} else {
 					clearInterval(intervalo);
