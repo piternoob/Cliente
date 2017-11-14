@@ -40,16 +40,18 @@ function calcularCuenta(stringCuenta){
   return numero;
 }
 
-function calcularIbanEs(codigo){
+function calcularIbanEs(codigo) {
   var cuenta=codigo+"142800";
-  var cuentaDouble=parseFloat(cuenta);
-  var resto=cuentaDouble%97;
-  var control=98-resto;
-  if (control<10) {
-    control="0"+control.toString();
+  var resto=0;
+  for (var i=0; i<cuenta.length; i+=10) {
+    var dividir = resto.toString() + cuenta.substr(i, 10);
+    resto = dividir % 97;
   }
-  var iban="ES"+control.toString();
-
+  var control=98-resto;
+  if (control < 10){
+      control="0"+control.toString();
+  }
+  var iban = "ES"+control;
   return iban;
 }
 
@@ -61,8 +63,8 @@ function comprobarIban(iban){
   for (var i = 0; i < 26; i++) {
     arrayNumeros[i]=10+i;
   }
-  var primera=(iban.charAt(0)).toUpperCase();
-  var segunda=(iban.charAt(1)).toUpperCase();
+  var primeraLetra=(iban.charAt(0)).toUpperCase();
+  var segundaLetra=(iban.charAt(1)).toUpperCase();
   var codigo=iban.substring(4);
   alert(codigo);
   var ibanNumeros=codigo+convertir(primera).toString()+convertir(segunda).toString()+iban.charAt(2).toString()+iban.charAt(3).toString();
@@ -96,21 +98,32 @@ function boton1() {
         var control = codigosControl(banco, sucursal, cuenta);
         document.write("Su código de control es " + control);
       } else
-        document.write("Cuenta no válida.");
+        document.write("Cuenta no válida: 10 dígitos necesarios.");
     } else
-      document.write("Cuenta no válida.");
+      document.write("Sucursal no válida: 4 dígitos necesarios.");
   } else
-    document.write("Cuenta no válida.");
+    document.write("Banco no válido: 4 dígitos necesarios.");
 }
 
 function boton2(){
-  var banco=prompt("Introduce el numero de banco:");
-  var sucursal=prompt("Introduce el numero de sucursal:");
-  var cuenta=prompt("Introduce el numero de cuenta:");
-  var control=codigosControl(banco, sucursal, cuenta);
-  var codigo=banco+sucursal+control+cuenta;
-  var iban=calcularIbanEs(codigo);
-  document.write(iban);
+  var banco = prompt("Introduce el numero de banco:");
+  if (banco.length == 4) {
+    var sucursal = prompt("Introduce el numero de sucursal:");
+    if (sucursal.length == 4) {
+      var cuenta = prompt("Introduce el numero de cuenta:");
+      if (cuenta.length == 10) {
+        var control = codigosControl(banco, sucursal, cuenta);
+        var codigo=banco+sucursal+control+cuenta;
+        var iban=calcularIbanEs(codigo);
+        document.write("Su código de iban es " + iban);
+      } else
+        document.write("Cuenta no válida: 10 dígitos necesarios.");
+    } else
+      document.write("Sucursal no válida: 4 dígitos necesarios.");
+  } else
+    document.write("Banco no válido: 4 dígitos necesarios.");
+
+
 }
 
 function boton3() {
